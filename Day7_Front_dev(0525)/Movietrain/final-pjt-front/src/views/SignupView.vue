@@ -1,0 +1,132 @@
+<template>
+  <div>
+    <section class="vh-100 bg-image">
+    <!-- <section class="vh-100 bg-image"
+      style="background-image: url('https://mdbcdn.b-cdn.net/img/Photos/new-templates/search-box/img4.webp');"> -->
+      <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+        <div class="container h-100">
+          <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+              <div class="card" style="border-radius: 15px;">
+                <div class="card-body p-5">
+                  <h1 id= "CA" class="text-uppercase text-center mb-5">Sign UP</h1>
+
+                  <form @submit.prevent="signUp">
+
+                    <div class="form-outline mb-1">
+                      <input type="text" id="form3Example1cg" class="form-control form-control-lg" placeholder="Your Name" v-model="username"/>
+                      <label class="form-label" for="form3Example1cg"></label>
+                    </div>
+
+                    <div class="form-outline mb-1">
+                      <input type="email" id="form3Example3cg" class="form-control form-control-lg" placeholder="Your Email" />
+                      <label class="form-label" for="form3Example3cg"></label>
+                    </div>
+
+                    <div class="form-outline mb-1">
+                      <input type="password" id="form3Example4cg" class="form-control form-control-lg" placeholder="Password" v-model="password1"/>
+                      <label class="form-label" for="form3Example4cg"></label>
+                    </div>
+
+                    <div class="form-outline mb-1">
+                      <input type="password" id="form3Example4cdg" class="form-control form-control-lg" placeholder="Confirm password" v-model="password2"/>
+                      <label class="form-label" for="form3Example4cdg"></label>
+                    </div>
+
+                    <div class="form-check d-flex justify-content-center mb-4">
+                      <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3cg" />
+                      <label class="form-check-label TEXT2" for="form2Example3g">
+                        I agree all statements in <a href="#!" class="text-body TEXT"><u>Terms of service</u></a>
+                      </label>
+                    </div>
+
+                    <div class="d-flex justify-content-center">
+                      <button type="submit"
+                        id="butt" class="btn btn-success btn-lg">Register</button>
+                    </div>
+
+                    <p class="text-center text-muted mt-4 mb-0">Have already an account? <router-link to="/login"
+                        class="fw-bold text-body TEXT"><u>Login here</u></router-link></p>
+                    <p class="text-center text-muted mt-1 mb-0"><router-link to="/"
+                        class="fw-bold text-body TEXT"><u>Go Main</u></router-link></p>
+
+                  </form>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'SignupView',
+  data() {
+    return {
+      username: null,
+      password1: null,
+      password2: null,
+    }
+  },
+  methods: {
+    signUp() {
+      const username = this.username
+      const password1 = this.password1
+      const password2 = this.password2
+
+      const payload = {
+        username, password1, password2
+      }
+      this.$store.dispatch('signUp', payload)
+    }
+  }
+
+}
+</script>
+
+<style scoped>
+  /* #butt{
+    background: linear-gradient(to right, rgba(0, 255, 225, 0.5), rgba(2, 96, 49, 0.5))
+  } */
+  #CA{
+    font-weight:900 !important;
+    background: -webkit-linear-gradient(45deg, rgb(255, 0, 234),yellow);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size:3.5rem;
+  }
+  .card{
+    background-color:rgb(30, 29, 29);
+    box-shadow: 0px 0rem 3px rgba(0, 0, 0, 1), inset 0px 3px 1rem rgba(255, 255, 255, 0.1);
+  }
+  .TEXT{
+    background: -webkit-linear-gradient(top, rgb(15, 186, 124), rgb(0, 251, 255));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: bold;  /* 원하는 굵기로 변경 가능 */
+    line-height: 1.5;  /* 'g' 문자가 잘리지 않도록 높이를 조정 */
+    padding-bottom: 5px;  /* 필요한 경우 아래쪽에 여백을 추가 */
+    overflow: visible;  /* 문자가 박스 바깥으로 나가도 잘리지 않게 함 */
+  }
+  .TEXT2{
+    color:rgb(177, 177, 177);
+  }
+  .form-control:focus {
+  background-color: #e9ecef;  /* 배경색 변경 */
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15), 0 0 0 0.2rem rgba(0, 255, 217, 0.5);  /* 그림자 추가 */
+}
+
+  .bg-image {
+  background-image: 
+    /* linear-gradient(to bottom, rgba(0,0,0,0) 60%, rgba(0,0,0,1) 100%), */
+    linear-gradient(90deg, rgba(149, 255, 207, 0.3), rgba(255, 146, 215, 0.3)),
+    url(../assets/bg4.png);
+  background-position: center bottom 10%;
+  /* filter: blur(8px);  */
+  
+}
+</style>
