@@ -145,28 +145,33 @@ export default new Vuex.Store({
             password
           }
         })
-        .then((res)=> {
-          const token = res.data.key
-          // console.log(token)
-          axios({
-            method: 'get',
-            url: `${API_URL}/user/userid/`,  // URL to retrieve user ID based on token (customize as needed)
-            headers: {
-              Authorization: `Token ${token}`
-            }
-          })
-          .then((response) => {
-            const username = response.data.username;
-            const id = response.data.id;
-            context.commit("SAVE_OTHERS", { token, username, id });
-            resolve(); // 성공적으로 로그인이 처리되었음을 resolve로 알림
+          .then((res) => {
+            const token = res.data.key;
+            axios({
+              method: 'get',
+              url: `${API_URL}/user/userid/`,
+              headers: {
+                Authorization: `Token ${token}`
+              }
+            })
+              .then((response) => {
+                const username = response.data.username;
+                const id = response.data.id;
+                context.commit("SAVE_OTHERS", { token, username, id });
+                resolve(); // 성공적으로 로그인이 처리되었음을 resolve로 알림
+              })
+              .catch((error) => {
+                console.log(error);
+                reject(error); // 오류를 reject로 전달
+              });
           })
           .catch((error) => {
+            console.log(error);
             reject(error); // 오류를 reject로 전달
           });
       });
-      }
-      )},
+    },
+    
 
     
     // posts 구현

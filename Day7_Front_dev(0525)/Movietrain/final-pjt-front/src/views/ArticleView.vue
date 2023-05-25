@@ -3,8 +3,8 @@
   <div class="header-section">
     <h1 class="MAINTEXT">Community Page</h1>
   </div>
-  <div class="content-section">
-    <router-link :to="{ name: 'Create' }" class="btn btn-success mt-3 mb-5">글쓰기</router-link>
+  <div class="content-section flex-start">
+    <router-link :to="{ name: 'Create' }" class="btn btn-success my-5">글쓰기</router-link>
     <ArticleList></ArticleList>
     <hr>
   </div>
@@ -68,12 +68,13 @@ export default {
 }
 
 .content-section {
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(0, 0, 0, 0.7);
   height: auto;  /* Here */
   width: 100%;
+  height:100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
 }
 
