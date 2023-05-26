@@ -44,7 +44,7 @@
 # ERD (BE) & Components (FE)
 
 ## ERD 
-![img](img/ERD.png)
+![img](img/ERD.PNG)
 
 ## Components
 ![img](img/Comp.png)
